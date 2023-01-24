@@ -1,0 +1,7 @@
+*.pdb
+*.o
+*.exe
+
+bin/
+lib/
+docout/
