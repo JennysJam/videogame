@@ -18,7 +18,7 @@ int main(int argc, char** argv) {
         char buffer[256];
         snprintf(buffer, sizeof buffer, "string #%d", i);
 
-        auto* sptr = new(string_pool.allocate()) std::string();
+        auto* sptr = new(string_pool.allocate()) std::string(buffer);
         printf("%s\n", sptr->c_str());
 
     }

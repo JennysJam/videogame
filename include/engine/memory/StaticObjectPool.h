@@ -133,7 +133,7 @@ auto StaticObjectPool<T, N, A>::allocate() -> T* {
     }
 
     Node* result_node = next_free;
-    size_t index = (node_array - result_node) / sizeof(Node);
+    size_t index = (result_node - node_array) / sizeof(Node);
     active_index[index] = true;
 
     next_free = next_free->next;
@@ -147,7 +147,7 @@ auto StaticObjectPool<T, N, A>::deallocate(T* ptr) -> void {
     // cast ptr to
     Node* nodeptr = reinterpret_cast<Node*>(ptr); 
     // get index of node array
-    size_t index = (node_array - nodeptr) / sizeof(Node);
+    size_t index = (nodeptr - node_array) / sizeof(Node);
 
     // perform destructor
     nodeptr->~T();
