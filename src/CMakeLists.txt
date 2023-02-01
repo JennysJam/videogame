@@ -1,6 +1,7 @@
 add_library(engine STATIC)
 
 target_include_directories(engine PUBLIC "${root}/include")
+target_include_directories(engine PUBLIC "${root}/src/vendor/lua05.1.5/src/")
 
 set_target_properties(engine 
     PROPERTIES 

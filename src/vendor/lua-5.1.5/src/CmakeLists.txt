@@ -1,0 +1,39 @@
+# todo -- this?
+
+target_sources(
+    engine PRIVATE
+    lapi.c lapi.h
+    lauxlic.c lauxlib.h
+    lbaselib.c 
+    lcode.c
+    ldblib.c
+    # ldebug.c ldebug.h -- add on option
+    ldo.h ldo.c
+    ldump.c
+    lfunc.h lfunc.c 
+    lgc.h lgc.c 
+    linit.c
+    liolib.c # make option?
+    llex.h llex.c 
+    llimits.h 
+    lmathlib.c
+    lmem.h lmem.c
+    loadlib.c #add on option
+    lobject.h lobject.c
+    lopcodes.h lopcodes.c
+    loslib.c
+    lparser.h lparser.c
+    lstate.h lstate.c
+    lstring.h lstring.c
+    lstrlib.c
+    ltable.h ltable.c
+    ltablib.c
+    ltm.c
+    ltm.h
+    lua.h lua.c
+    luaconf.h
+    lualib.h
+    lundump.h lundump.c
+    lvm.h lvm.c
+    lzio.h lzio.c
+)
