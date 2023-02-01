@@ -3,7 +3,7 @@
 
 #include <SDL.h>
 
-namespace game {
+namespace engine {
 namespace util {
 
 /// @brief A type to be used as a handle
@@ -14,8 +14,8 @@ struct HandleT final {
 };
 
 
-}
-} // namespace game
+} // end namespace util
+} // end namespace engine
 
 
 #endif

@@ -6,7 +6,7 @@
 #include <cstddef>
 #include <iterator>
 
-namespace game {
+namespace engine {
 
 class StaticObjectPoolIterGaurd final{};
 
@@ -75,5 +75,6 @@ auto StaticObjectPool<T,N,A>::clear() -> void {
     this->init();
 }
 
-}
+} //end namespace engine
+
 #endif

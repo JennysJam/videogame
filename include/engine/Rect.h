@@ -1,10 +1,10 @@
-#if !defined(GAME_INCLUDE_RECT_H)
-#define GAME_INCLUDE_RECT_H
+#ifndef GAME_INCLUDE_SAMPLE_H
+#define GAME_INCLUDE_SAMPLE_H
 
 #include <SDL.h>
 #include <SDL_rect.h>
 
-namespace game {
+namespace engine {
 
 class Rect final {
 public:
@@ -33,7 +33,7 @@ auto operator!=(Rect lhs, Rect rhs) noexcept -> bool {
     return !(lhs == rhs);
 }
 
-} // namespace game
+} // end namespace engine
 
 
 #endif // GAME_INCLUDE_RECT_H
