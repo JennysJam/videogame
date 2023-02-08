@@ -5,7 +5,6 @@
 #include <SDL_assert.h>
 #include <type_traits>
 #include <cstdint>
-#include <util>
 
 namespace engine {
 
