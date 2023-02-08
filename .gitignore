@@ -2,7 +2,7 @@
 *.o
 *.exe
 
-build/*
-bin/*
-lib/*
-docout/*
+build/
+bin/
+lib/
+docout/
