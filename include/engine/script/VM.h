@@ -28,7 +28,9 @@ class VM final {
         void run_script(Script& script);
         void run_file(const char* filepath);
         void run_buffer(const char* buffer, size_t len);
-        
+
+        void close();
+                
 
     private:
         lua_State* _state_ptr;
