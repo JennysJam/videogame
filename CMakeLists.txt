@@ -9,12 +9,12 @@ project(
 # set root element
 set(root "${CMAKE_CURRENT_LIST_DIR}")
 
+# add thirdparty libraries
+add_subdirectory("external")
+
 #library code scope
 add_subdirectory("src")
 
 #binary scopes
 add_subdirectory("app")
 
-# add thirdparty libraries
-
-add_subdirectory("external")

@@ -15,4 +15,5 @@ target_link_libraries(
     engine
     PUBLIC
     SDL2::SDL2
+    glm::glm
 )
