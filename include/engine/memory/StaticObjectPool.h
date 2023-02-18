@@ -18,10 +18,39 @@ class StaticObjectPoolIterGaurd final{};
 
 template<typename T, std::size_t N, std::size_t A> class StaticObjectPoolIter;
 
-/// @brief Fixed size pool allocator for provided type.
-/// @tparam T the type the object pool stores 
-/// @tparam N The number of objects in the pool
-/// @tparam A Alignment of objects (default to alignof(T))
+/**
+ * @brief Fixed size pool allocator for provided type, exposes iterator over live values.
+ * @details This pool serves two core purposes:
+ * 1. It acts an (currently nonstandard) allocator with ~0 internal fragmentation for some type T.
+ * 2. It also acts as a containing fixed_vector type data structure that
+ * exposes an ability to query active objects and perform actions on them
+ * via the iterator interface (currently a straightforward forward iterator).
+ * 
+ * @example
+ * @code{.cxx}
+ * 
+ * #include <engine/StaticObjectPool.h>
+ * #include <string>
+ * #include <iostream>
+ * 
+ * StaticObjectPool<std::string, 16> string_pool;
+ * 
+ * for (int i = 0; i < 4; i++) {
+ *      auto tmp = new(string_pool.allocate()) std::string("yeeeeeeeeehehawwww");
+ * }
+ * 
+ * for (auto& s : string_pool) {
+ *      std::cout << s << std::endl
+ * }
+ * 
+ * string_pool.reset();
+ * 
+ * @endcode
+ * 
+ * @tparam T the type the object pool stores
+ * @tparam N The number of objects in the pool
+ * @tparam A Alignment of objects (defaults to `alignof(T)`)
+ */
 template<typename T, std::size_t N, std::size_t A = alignof(T)>
 class StaticObjectPool final {
 public:
@@ -166,6 +195,16 @@ auto StaticObjectPool<T, N, A>::deallocate(T* ptr) -> void {
 template<typename T, std::size_t N, std::size_t A>
 StaticObjectPoolIter<T,N,A>::StaticObjectPoolIter(StaticObjectPool<T,N,A>& object_pool) noexcept {
     this->object_pool = std::addressof(object_pool);
+}
+
+template<typename T, std::size_t N, size_t A>
+bool operator==(const StaticObjectPoolIter<T, N, A>& lhs, const StaticObjectPoolIterGaurd& rhs) noexcept {
+    return lhs.index == N; 
+}
+
+template<typename T, std::size_t N, size_t A>
+bool operator!=(const StaticObjectPoolIter<T, N, A>& lhs, const StaticObjectPoolIterGaurd& rhs) noexcept {
+    return lhs.index != N;
 }
 
 } //end namespace memory
